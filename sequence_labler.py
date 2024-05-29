@@ -10,27 +10,16 @@ from matplotlib.widgets import Button, RadioButtons
 import os
 import glob
 
-SOURCE_FILE = "C:/Users/itaym/Documents/limudim/semester_8/sequence_labler/measurements_2024_02_02-10_48_48.csv"
+SOURCE_FILE = "C:/Users/itaym/Documents/limudim/semester_8/robotic_hand_project/data_measurements/up_28_03_2024_18_12_59.csv"
 OUTPUT_DIR = "C:/Users/itaym/Documents/limudim/semester_8/sequence_labler/output"
 LABELS = ['Up', 'Down', 'Forward', 'Back'] # TODO: generalize?
 DATA_AXES = ['accX', 'accY', 'accZ', 'gyroX','gyroY','gyroZ'] # TODO: generalize?
-NUM_SAMPLES = 400 # number of samples per example
+NUM_SAMPLES = 100 # number of samples per example
 start_idx = 0
 buttons_background = 'lightgoldenrodyellow'
 
-# TODO: can we generalize to not being dependant on specific header naming?
 def read_sample(src: os.PathLike) -> pd.DataFrame:
     return pd.read_csv(src).infer_objects()
-    # return pd.read_csv(src, dtype={
-    #     'timestamp' : int,
-    #     'accX'      : float,
-    #     'accY'      : float,
-    #     'accZ'      : float,
-    #     'gyroX'     : float,
-    #     'gyroY'     : float,
-    #     'gyroZ'     : float,
-    #     'key_flag'  : str
-    #     })
 
 full_data = read_sample(SOURCE_FILE)
 
